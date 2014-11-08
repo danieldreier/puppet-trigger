@@ -1,0 +1,16 @@
+{
+  "name": "danieldreier-trigger",
+  "version": "0.1.0",
+  "author": "Daniel Dreier",
+  "summary": "Trigger puppet runs on other nodes during catalog application",
+  "license": "Apache 2.0",
+  "source": "https://github.com/danieldreier/puppet-trigger",
+  "project_page": "https://github.com/danieldreier/puppet-trigger",
+  "issues_url": "https://github.com/danieldreier/puppet-trigger/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ]
+}
