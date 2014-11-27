@@ -61,5 +61,13 @@ Puppet::Type.newtype(:trigger) do
     end
   end
 
+  newparam(:keyttl) do
+    desc 'TTL to use with key-value store providers that support ttl'
+    defaultto 180
+    validate do |value|
+      fail Puppet::Error, 'must be an integer' unless value.is_a?(Integer)
+    end
+  end
+
   # may want to add ability to contain to current environment or use tags
 end
