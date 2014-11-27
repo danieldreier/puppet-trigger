@@ -1,0 +1,79 @@
+digraph Resources {
+    label = "Resources"
+    "Stage[main]" [
+        fontsize = 8,
+        label = "Stage[main]"
+    ]
+
+    "Class[Settings]" [
+        fontsize = 8,
+        label = "Class[Settings]"
+    ]
+
+    "Class[Main]" [
+        fontsize = 8,
+        label = "Class[Main]"
+    ]
+
+    "Trigger[refresh load balancers]" [
+        fontsize = 8,
+        label = "Trigger[refresh load balancers]"
+    ]
+
+    "Exec[/usr/bin/touch /tmp/foo]" [
+        fontsize = 8,
+        label = "Exec[/usr/bin/touch /tmp/foo]"
+    ]
+
+    "Schedule[puppet]" [
+        fontsize = 8,
+        label = "Schedule[puppet]"
+    ]
+
+    "Schedule[hourly]" [
+        fontsize = 8,
+        label = "Schedule[hourly]"
+    ]
+
+    "Schedule[daily]" [
+        fontsize = 8,
+        label = "Schedule[daily]"
+    ]
+
+    "Schedule[weekly]" [
+        fontsize = 8,
+        label = "Schedule[weekly]"
+    ]
+
+    "Schedule[monthly]" [
+        fontsize = 8,
+        label = "Schedule[monthly]"
+    ]
+
+    "Schedule[never]" [
+        fontsize = 8,
+        label = "Schedule[never]"
+    ]
+
+    "Filebucket[puppet]" [
+        fontsize = 8,
+        label = "Filebucket[puppet]"
+    ]
+
+    "Stage[main]" -> "Class[Settings]" [
+        fontsize = 8
+    ]
+
+    "Stage[main]" -> "Class[Main]" [
+        fontsize = 8
+    ]
+
+    "Class[Main]" -> "Trigger[refresh load balancers]" [
+        fontsize = 8
+    ]
+
+    "Class[Main]" -> "Exec[/usr/bin/touch /tmp/foo]" [
+        fontsize = 8
+    ]
+
+}
