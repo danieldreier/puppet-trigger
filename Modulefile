@@ -8,3 +8,4 @@ description   'Trigger puppet runs on other nodes during catalog application'
 project_page  'https://github.com/danieldreier/puppet-trigger'
 
 dependency 'puppetlabs/stdlib'
+dependency 'gini/archive'

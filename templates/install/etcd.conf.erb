@@ -1,0 +1,36 @@
+addr = "<%= scope['trigger::install::etcd::etcd_ip'] %>:4001"
+bind_addr = "0.0.0.0"
+#ca_file = ""
+#cert_file = ""
+#cors = []
+#cpu_profile_file = ""
+data_dir = "<%= scope['trigger::install::etcd::data_dir'] %>"
+discovery = "<%= scope['trigger::install::etcd::discovery_url'] %>"
+#http_read_timeout = 10.0
+#http_write_timeout = 10.0
+#key_file = ""
+#peers = []
+#peers = "<%= scope['trigger::install::etcd::peers'] %>"
+#peers_file = ""
+#max_cluster_size = 9
+#max_result_buffer = 1024
+max_retry_attempts = 5
+#name = "default-name"
+name = "<%= scope['trigger::install::etcd::etcd_name'] %>"
+#snapshot = true
+verbose = false
+#very_verbose = false
+
+[peer]
+addr = "<%= scope['trigger::install::etcd::etcd_ip'] %>:7001"
+bind_addr = "0.0.0.0"
+#addr = "127.0.0.1:7001"
+#bind_addr = "127.0.0.1:7001"
+#ca_file = ""
+#cert_file = ""
+#key_file = ""
+
+[cluster]
+#active_size = 9
+remove_delay = 10.0
+#sync_interval = 5.0
