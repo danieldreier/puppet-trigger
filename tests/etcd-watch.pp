@@ -1,0 +1,1 @@
+class {'trigger::watch::etcd': }

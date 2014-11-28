@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# watch for etcd events to trigger puppet on this host
+# uses task spooler to queue up puppet runs so that multiple events register
+# and we don't lose a refresh just because it happened during a previous run
+
+while true; do
+  <%= scope['trigger::watch::etcd::etcdctl_cmd'] %> watch <%= @etcd_key %> && tsp -- <%= scope['trigger::watch::etcd::run_cmd'] %>
+done
