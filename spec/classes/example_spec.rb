@@ -2,34 +2,16 @@ require 'spec_helper'
 
 describe 'trigger' do
   context 'supported operating systems' do
-    ['Debian', 'RedHat'].each do |osfamily|
-      describe "trigger class without any parameters on #{osfamily}" do
+#    PuppetSpecFacts.puppet_platforms.each do |name, facthash|
+    PuppetSpecFacts.facts_for_platform_by_fact(select_facts: {'lsbdistid' => 'CentOS',
+                                                              'is_pe'       => 'true',
+                                                              'architecture' => 'x86_64' }).each do |name, facthash|
+      describe "trigger class without any parameters on #{name}" do
         let(:params) {{ }}
-        let(:facts) {{
-          :osfamily => osfamily,
-        }}
+        let(:facts) { facthash }
 
         it { should compile.with_all_deps }
-
-        it { should contain_class('trigger::params') }
-        it { should contain_class('trigger::install').that_comes_before('trigger::config') }
-        it { should contain_class('trigger::config') }
-        it { should contain_class('trigger::service').that_subscribes_to('trigger::config') }
-
-        it { should contain_service('trigger') }
-        it { should contain_package('trigger').with_ensure('present') }
       end
-    end
-  end
-
-  context 'unsupported operating system' do
-    describe 'trigger class without any parameters on Solaris/Nexenta' do
-      let(:facts) {{
-        :osfamily        => 'Solaris',
-        :operatingsystem => 'Nexenta',
-      }}
-
-      it { expect { should contain_package('trigger') }.to raise_error(Puppet::Error, /Nexenta not supported/) }
     end
   end
 end

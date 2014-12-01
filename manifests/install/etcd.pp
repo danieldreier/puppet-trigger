@@ -51,6 +51,11 @@ class trigger::install::etcd (
     content => template('trigger/install/etcd.debian-init.erb'),
     notify  => Service['etcd']
   }
+  file { '/usr/local/bin/etcdctl':
+    ensure  => 'link',
+    target  => '/opt/etcd/etcdctl',
+    require => Archive['etcd'],
+  }
 
   service { 'etcd':
     ensure  => 'running',

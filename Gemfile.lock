@@ -5,6 +5,13 @@ GIT
     rspec-puppet (1.0.1)
       rspec
 
+PATH
+  remote: /Users/danieldreier/development/puppet_spec_facts
+  specs:
+    puppet_spec_facts (0.0.1)
+      json
+      puppet (~> 3.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -18,7 +25,7 @@ GEM
     aws-sdk (1.42.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
-    backports (3.6.3)
+    backports (3.6.4)
     beaker (1.20.1)
       aws-sdk (= 1.42.0)
       blimpy (~> 0.6)
@@ -49,7 +56,7 @@ GEM
       timers (~> 4.0.0)
     coderay (1.1.0)
     diff-lcs (1.2.5)
-    docker-api (1.14.0)
+    docker-api (1.15.0)
       archive-tar-minitar
       excon (>= 0.38.0)
       json
@@ -72,11 +79,11 @@ GEM
       fog-json
       ipaddress (~> 0.5)
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.6.1)
+    fog-brightbox (0.7.0)
       fog-core (~> 1.22)
       fog-json
-      inflecto
-    fog-core (1.24.0)
+      inflecto (~> 0.0.2)
+    fog-core (1.25.0)
       builder
       excon (~> 0.38)
       formatador (~> 0.2)
@@ -104,7 +111,7 @@ GEM
       retriable (>= 1.4)
       signet (>= 0.5.0)
       uuidtools (>= 2.1.0)
-    guard (2.8.1)
+    guard (2.10.0)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -123,10 +130,10 @@ GEM
     ipaddress (0.8.0)
     json (1.8.1)
     json_pure (1.8.1)
-    jwt (1.0.0)
+    jwt (1.2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (2.7.11)
+    listen (2.8.3)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -171,7 +178,7 @@ GEM
     pusher-client (0.6.0)
       json
       websocket (~> 1.0)
-    rake (10.3.2)
+    rake (10.4.0)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -210,7 +217,7 @@ GEM
     thor (0.19.1)
     timers (4.0.1)
       hitimes
-    travis (1.7.2)
+    travis (1.7.4)
       addressable (~> 2.3)
       backports
       faraday (~> 0.9)
@@ -243,6 +250,7 @@ DEPENDENCIES
   metadata-json-lint
   puppet (~> 3.7.0)
   puppet-blacksmith
+  puppet_spec_facts!
   puppetlabs_spec_helper
   rake
   rspec-puppet!

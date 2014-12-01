@@ -34,19 +34,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       node.vm.provision "shell",
         inline: "curl -XDELETE #{ETCD_DISCOVERY_URL}/_state"
       node.vm.provision "shell",
-        inline: "FACTER_etcd_discovery_url=#{ETCD_DISCOVERY_URL} puppet apply /vagrant/tests/install_etcd.pp"
+        inline: "FACTER_etcd_discovery_url=#{ETCD_DISCOVERY_URL} puppet apply /vagrant/tests/install_etcd_with_watch.pp"
     end
 
     config.vm.define :server2 do |node|
       node.vm.hostname = 'server2.boxnet'
       node.vm.network :private_network, :auto_network => true
       node.vm.provision "shell",
-        inline: "FACTER_etcd_discovery_url=#{ETCD_DISCOVERY_URL} puppet apply /vagrant/tests/install_etcd.pp"
+        inline: "FACTER_etcd_discovery_url=#{ETCD_DISCOVERY_URL} puppet apply /vagrant/tests/install_etcd_with_watch.pp"
     end
     config.vm.define :server3 do |node|
       node.vm.hostname = 'server3.boxnet'
       node.vm.network :private_network, :auto_network => true
       node.vm.provision "shell",
-        inline: "FACTER_etcd_discovery_url=#{ETCD_DISCOVERY_URL} puppet apply /vagrant/tests/install_etcd.pp"
+        inline: "FACTER_etcd_discovery_url=#{ETCD_DISCOVERY_URL} puppet apply /vagrant/tests/install_etcd_with_watch.pp"
     end
 end

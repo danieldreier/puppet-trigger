@@ -1,23 +1,39 @@
 # == Class trigger::watch::etcd
 #
-# This defined type configures a node to watch etcd
+# This class configures a node to watch etcd
 # It runs puppet when a matching key is found
 #
-define trigger::watch::etcd (
+class trigger::watch::etcd (
   $trigger_hostname = $::fqdn,
-  $etcdctl_cmd      = 'etcdctl',
+  $etcdctl_cmd      = '/opt/etcd/etcdctl',
   $etcdctl_prefix   = '/puppet_trigger/events/hosts',
   $run_cmd          = 'puppet agent --test',
-  $interval         = '*',
-  $user             = 'root'
+  $etcdwatch_pwd    = '/usr/local/bin/etcdwatch',
   ){
+  include ::trigger::watch::dependencies
+
   $etcd_key = "${etcdctl_prefix}/${trigger_hostname}"
 
-  $cronjob = "${etcdcl_cmd} ls ${etcd_key} && ${run_cmd} && ${etcdcl_cmd} rm ${etcd_key}"
-
-  cron { "watch etcd key ${etcd_key}":
-    command => $cronjob,
-    user    => $user,
-    minute  => $interval,
+  file { 'etcdwatch':
+    path    => $etcdwatch_pwd,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    content => template('trigger/watch/etcdwatch.sh.erb'),
+    notify  => Service['etcdwatch']
+  }
+  file { 'etcdwatch-service':
+    path    => '/etc/init.d/etcdwatch',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    require => File['etcdwatch'],
+    content => template('trigger/watch/etcdwatch.debian-init.erb'),
+    notify  => Service['etcdwatch']
+  }
+  service { 'etcdwatch':
+    ensure  => 'running',
+    enable  => true,
+    require => [ File['etcdwatch-service'], File['etcdwatch'] ]
   }
 }

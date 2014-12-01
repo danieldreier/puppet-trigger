@@ -1,9 +1,8 @@
 trigger {'refresh load balancers':
-  hosts    => ['lb01.example.com',
-               'lb02.example.com',
-               'lb03.example.com', ],
+  hosts    => [ 'server1.boxnet',
+                'server2.boxnet',
+                'server3.boxnet', ],
   provider => 'etcd',
-  tag      => ['staging', 'lb', 'puppetlabs.com'],
 }
 
 exec {'/usr/bin/touch /tmp/foo':
