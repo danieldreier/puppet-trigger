@@ -100,7 +100,7 @@ than hard-coding in host names. For example, you might do something like:
 
 ```puppet
 trigger {'refresh load balancers':
-  hosts    => query_nodes(Class[Profile::Loadbalancer]', fqdn)
+  hosts    => query_nodes('Class[Profile::Loadbalancer]', fqdn)
   provider => 'etcd',
 }
 ```
