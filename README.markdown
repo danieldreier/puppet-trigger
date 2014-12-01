@@ -42,6 +42,7 @@ it does work.
 
 ## Vagrant Demo
 To see it for yourself, there's a vagrant-based demo included in this repo.
+
 1. Open `Vagrantfile` in your favorite editor
 2. Visit [https://discovery.etcd.io/new](https://discovery.etcd.io/new)
 3. Set `ETCD_DISCOVERY_URL` to the value you got from [discovery.etcd.io](https://discovery.etcd.io/new)
