@@ -3,13 +3,28 @@
   "version": "0.1.0",
   "author": "Daniel Dreier",
   "summary": "Trigger puppet runs on other nodes during catalog application",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/danieldreier/puppet-trigger",
   "project_page": "https://github.com/danieldreier/puppet-trigger",
   "issues_url": "https://github.com/danieldreier/puppet-trigger/issues",
   "description": "Trigger puppet runs on other nodes during catalog application",
   "dependencies": [
-    {"name":"puppetlabs/stdlib"},
-    {"name":"gini/archive"}
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 4.0.0"
+    },
+    {
+      "name": "gini-archive",
+      "version_requirement": ">= 0.2.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
   ]
+
 }
