@@ -1,6 +1,6 @@
 {
   "name": "danieldreier-trigger",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Daniel Dreier",
   "summary": "Trigger puppet runs on other nodes during catalog application",
   "license": "Apache-2.0",
@@ -26,5 +26,4 @@
       ]
     }
   ]
-
 }
